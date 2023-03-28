@@ -26,12 +26,10 @@
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col-6">
-              <h3>
-                <b
-                  ><i class="fa-solid fa-location-dot"></i>
-                  <span th:text="${jadwal.data.kabKota}"></span>
-                </b>
-              </h3>
+              <h4>
+                <i class="fa-solid fa-location-dot"></i>
+                <span th:text="${jadwal.data.kabKota}"></span>
+              </h4>
             </div>
             <div class="col-3">
               <select
@@ -50,7 +48,12 @@
               </select>
             </div>
             <div class="col-3">
-              <select id="kabKota" name="kabKota" class="form-select">
+              <select
+                id="kabKota"
+                name="kabKota"
+                class="form-select"
+                onselect="onSelectKabKota(this.value);"
+              >
                 <option disabled>Pilih Kabupaten/Kota</option>
                 <option
                   th:each="kabKota : ${kabKota.data}"

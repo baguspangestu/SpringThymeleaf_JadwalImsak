@@ -3,6 +3,7 @@ package com.irvanudin.kuis.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.irvanudin.kuis.models.JadwalModel;
@@ -20,24 +21,24 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(Model model) throws JsonProcessingException {
-        // Init Variable
-        String initProvinsi = "Lampung";
-        String initKabKota = "Kab. Pringsewu";
+    public String home(@RequestParam(defaultValue = "Lampung", required = false) String provinsi,
+                       @RequestParam(defaultValue = "Kab. Pringsewu", required = false) String kabkota,
+                       Model model) throws JsonProcessingException {
         // JsonString
         String provinsiJString = apiService.getProvinsi();
-        String kabKotaJString = apiService.getKabKota(initProvinsi);
-        String jadwalJString = apiService.getJadwal(initProvinsi, initKabKota);
+        String kabKotaJString = apiService.getKabKota(provinsi);
+        String jadwalJString = apiService.getJadwal(provinsi, kabkota);
         // Json to Object
         ObjectMapper objectMapper = new ObjectMapper();
-        ProvinsiModel provinsi = objectMapper.readValue(provinsiJString, ProvinsiModel.class);
-        KabKotaModel kabKota = objectMapper.readValue(kabKotaJString, KabKotaModel.class);
-        JadwalModel jadwal = objectMapper.readValue(jadwalJString, JadwalModel.class);
+        ProvinsiModel provinsiObj = objectMapper.readValue(provinsiJString, ProvinsiModel.class);
+        KabKotaModel kabKotaObj = objectMapper.readValue(kabKotaJString, KabKotaModel.class);
+        JadwalModel jadwalObj = objectMapper.readValue(jadwalJString, JadwalModel.class);
         // Add to Model
-        model.addAttribute("provinsi", provinsi);
-        model.addAttribute("kabKota", kabKota);
-        model.addAttribute("jadwal", jadwal);
+        model.addAttribute("provinsi", provinsiObj);
+        model.addAttribute("kabKota", kabKotaObj);
+        model.addAttribute("jadwal", jadwalObj);
         // Return View
         return "home";
     }
+    
 }

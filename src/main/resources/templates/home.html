@@ -10,6 +10,13 @@
     <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/webjars/font-awesome/6.3.0/css/all.min.css" />
+    <style>
+      .table-container thead th {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+      }
+    </style>
   </head>
   <body>
     <!-- Head -->
@@ -67,45 +74,50 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table
-              class="table table-striped table-bordered table-hover text-center align-middle"
+            <div
+              class="table-container"
+              style="max-height: 56vh; overflow-y: auto"
             >
-              <thead>
-                <tr class="text-nowrap">
-                  <th>Tanggal</th>
-                  <th>Imsak</th>
-                  <th>Subuh</th>
-                  <th>Terbit</th>
-                  <th>Dhuha</th>
-                  <th>Dzuhur</th>
-                  <th>Ashar</th>
-                  <th>Maghrib</th>
-                  <th>Isya</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? 'table-info' : ''"
-                  th:each="jadwal : ${jadwal.data.data}"
-                >
-                  <td th:text="${jadwal.value.tanggal}"></td>
-                  <td
-                    th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary:  table-success "
-                    th:text="${jadwal.value.imsak}"
-                  ></td>
-                  <td th:text="${jadwal.value.subuh}"></td>
-                  <td th:text="${jadwal.value.terbit}"></td>
-                  <td th:text="${jadwal.value.dhuha}"></td>
-                  <td th:text="${jadwal.value.dzuhur}"></td>
-                  <td th:text="${jadwal.value.ashar}"></td>
-                  <td
-                    th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary :table-success "
-                    th:text="${jadwal.value.maghrib}"
-                  ></td>
-                  <td th:text="${jadwal.value.isya}"></td>
-                </tr>
-              </tbody>
-            </table>
+              <table
+                class="table table-striped table-bordered table-hover text-center align-middle"
+              >
+                <thead>
+                  <tr class="text-nowrap">
+                    <th>Tanggal</th>
+                    <th>Imsak</th>
+                    <th>Subuh</th>
+                    <th>Terbit</th>
+                    <th>Dhuha</th>
+                    <th>Dzuhur</th>
+                    <th>Ashar</th>
+                    <th>Maghrib</th>
+                    <th>Isya</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? 'table-info' : ''"
+                    th:each="jadwal : ${jadwal.data.data}"
+                  >
+                    <td th:text="${jadwal.value.tanggal}"></td>
+                    <td
+                      th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary:  table-success "
+                      th:text="${jadwal.value.imsak}"
+                    ></td>
+                    <td th:text="${jadwal.value.subuh}"></td>
+                    <td th:text="${jadwal.value.terbit}"></td>
+                    <td th:text="${jadwal.value.dhuha}"></td>
+                    <td th:text="${jadwal.value.dzuhur}"></td>
+                    <td th:text="${jadwal.value.ashar}"></td>
+                    <td
+                      th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary :table-success "
+                      th:text="${jadwal.value.maghrib}"
+                    ></td>
+                    <td th:text="${jadwal.value.isya}"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <span class="badge bg-secondary my-1"
             >Semuanya dalam Waktu Indonesia Barat (WIB)</span

@@ -10,6 +10,7 @@ import com.irvanudin.kuis.models.JadwalModel;
 import com.irvanudin.kuis.models.KabKotaModel;
 import com.irvanudin.kuis.models.ProvinsiModel;
 import com.irvanudin.kuis.services.ApiService;
+import com.irvanudin.kuis.utils.helpers;
 
 @Controller
 public class HomeController {
@@ -24,6 +25,8 @@ public class HomeController {
     public String home(@RequestParam(defaultValue = "Lampung", required = false) String provinsi,
                        @RequestParam(defaultValue = "Kab. Pringsewu", required = false) String kabkota,
                        Model model) throws JsonProcessingException {
+        // Get Date
+        String date = helpers.getDateNow();
         // JsonString
         String provinsiJString = apiService.getProvinsi();
         String kabKotaJString = apiService.getKabKota(provinsi);
@@ -34,6 +37,7 @@ public class HomeController {
         KabKotaModel kabKotaObj = objectMapper.readValue(kabKotaJString, KabKotaModel.class);
         JadwalModel jadwalObj = objectMapper.readValue(jadwalJString, JadwalModel.class);
         // Add to Model
+        model.addAttribute("date", date);
         model.addAttribute("provinsi", provinsiObj);
         model.addAttribute("kabKota", kabKotaObj);
         model.addAttribute("jadwal", jadwalObj);

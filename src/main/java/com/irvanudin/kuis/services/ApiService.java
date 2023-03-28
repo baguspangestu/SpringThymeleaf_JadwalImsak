@@ -19,14 +19,16 @@ public class ApiService {
         this.restTemplate = restTemplate;
     }
 
+    private String root = "https://equran.id/api/v2/imsakiyah";
+
     public String getProvinsi() {
-        String url = "https://equran.id/api/v2/imsakiyah/provinsi";
+        String url = root + "/provinsi";
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         return response.getBody();
     }
     
     public String getKabKota(String provinsi) {
-      String url = "https://equran.id/api/v2/imsakiyah/kabkota";
+      String url =  root + "/kabkota";
       Map<String, String> requestBody = new HashMap<>();
       requestBody.put("provinsi", provinsi);
       HttpHeaders headers = new HttpHeaders();
@@ -37,7 +39,7 @@ public class ApiService {
     }
 
     public String getJadwal(String provinsi, String kabKota) {
-      String url = "https://equran.id/api/v2/imsakiyah/jadwal";
+      String url =  root + "/jadwal";
       Map<String, String> requestBody = new HashMap<>();
       requestBody.put("provinsi", provinsi);
       requestBody.put("kabKota", kabKota);

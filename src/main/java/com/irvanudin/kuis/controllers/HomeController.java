@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.irvanudin.kuis.models.JadwalModel;
 import com.irvanudin.kuis.models.KabKotaModel;
 import com.irvanudin.kuis.models.ProvinsiModel;
+import com.irvanudin.kuis.models.JadwalModel.DetailJadwal;
 import com.irvanudin.kuis.services.ApiService;
 import com.irvanudin.kuis.utils.helpers;
 
@@ -36,6 +37,9 @@ public class HomeController {
         ProvinsiModel provinsiObj = objectMapper.readValue(provinsiJString, ProvinsiModel.class);
         KabKotaModel kabKotaObj = objectMapper.readValue(kabKotaJString, KabKotaModel.class);
         JadwalModel jadwalObj = objectMapper.readValue(jadwalJString, JadwalModel.class);
+        // Cek Date & set isToday
+        DetailJadwal jadwalData = jadwalObj.getData().getData().get(date);
+        if (jadwalData != null) jadwalData.setIsToday(true); 
         // Add to Model
         model.addAttribute("date", date);
         model.addAttribute("provinsi", provinsiObj);

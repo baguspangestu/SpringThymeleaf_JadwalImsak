@@ -96,12 +96,12 @@
                 </thead>
                 <tbody>
                   <tr
-                    th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? 'table-info' : ''"
+                    th:class="${jadwal.value.isToday} ? 'table-info' : ''"
                     th:each="jadwal : ${jadwal.data.data}"
                   >
                     <td th:text="${jadwal.value.tanggal}"></td>
                     <td
-                      th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary:  table-success "
+                      th:class="${jadwal.value.isToday} ? table-primary:  table-success "
                       th:text="${jadwal.value.imsak}"
                     ></td>
                     <td th:text="${jadwal.value.subuh}"></td>
@@ -110,7 +110,7 @@
                     <td th:text="${jadwal.value.dzuhur}"></td>
                     <td th:text="${jadwal.value.ashar}"></td>
                     <td
-                      th:class="${jadwal.value.tanggal == 'Rabu, 29/03/2023'} ? table-primary :table-success "
+                      th:class="${jadwal.value.isToday} ? table-primary :table-success "
                       th:text="${jadwal.value.maghrib}"
                     ></td>
                     <td th:text="${jadwal.value.isya}"></td>

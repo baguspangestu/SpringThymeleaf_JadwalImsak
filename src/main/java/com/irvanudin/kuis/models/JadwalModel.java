@@ -62,6 +62,7 @@ public class JadwalModel {
     }
 
     public static class DetailJadwal {
+        private Boolean isToday = false;
         private String tanggal;
         private String imsak;
         private String subuh;
@@ -71,6 +72,14 @@ public class JadwalModel {
         private String ashar;
         private String maghrib;
         private String isya;
+
+        public Boolean getIsToday() {
+            return isToday;
+        }
+
+        public void setIsToday(Boolean isToday) {
+            this.isToday = isToday;
+        }
 
         public String getTanggal() {
             return tanggal;

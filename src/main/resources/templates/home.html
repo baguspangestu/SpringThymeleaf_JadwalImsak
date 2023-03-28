@@ -1,9 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Fetching Data from API External</title>
+    <title>Prayer Time</title>
   </head>
   <body>
-    <h1>Data from API External:</h1>
-    <div th:text="${jadwal}"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Imsak</th>
+          <th>Subuh</th>
+          <th>Terbit</th>
+          <th>Dhuha</th>
+          <th>Dzuhur</th>
+          <th>Ashar</th>
+          <th>Maghrib</th>
+          <th>Isya</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="jadwal : ${jadwal.data.data}">
+          <td th:text="${jadwal.value.tanggal}"></td>
+          <td th:text="${jadwal.value.imsak}"></td>
+          <td th:text="${jadwal.value.subuh}"></td>
+          <td th:text="${jadwal.value.terbit}"></td>
+          <td th:text="${jadwal.value.dhuha}"></td>
+          <td th:text="${jadwal.value.dzuhur}"></td>
+          <td th:text="${jadwal.value.ashar}"></td>
+          <td th:text="${jadwal.value.maghrib}"></td>
+          <td th:text="${jadwal.value.isya}"></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

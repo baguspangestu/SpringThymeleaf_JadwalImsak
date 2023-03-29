@@ -10,4 +10,4 @@ Aplikasi Jadwak Imsyakiah Ramadhan 2023 sebagai tugas kuis kuliah S1 Sistem Info
 
 Requested by my friend (Irvanudin)
 
-© 2022 Bagus Pangestu - <baguspangestu@yandex.com>
+© 2023 Bagus Pangestu - <baguspangestu@yandex.com>

@@ -11,7 +11,7 @@ import com.irvanudin.kuis.models.KabKotaModel;
 import com.irvanudin.kuis.models.ProvinsiModel;
 import com.irvanudin.kuis.models.JadwalModel.DetailJadwal;
 import com.irvanudin.kuis.services.ApiService;
-import com.irvanudin.kuis.utils.helpers;
+import com.irvanudin.kuis.utils.Helpers;
 
 @Controller
 public class HomeController {
@@ -27,7 +27,7 @@ public class HomeController {
                        @RequestParam(defaultValue = "Kab. Pringsewu", required = false) String kabkota,
                        Model model) throws JsonProcessingException {
         // Get Date
-        String date = helpers.getDateNow();
+        String date = Helpers.getDateNow();
         // JsonString
         String provinsiJString = apiService.getProvinsi();
         String kabKotaJString = apiService.getKabKota(provinsi);

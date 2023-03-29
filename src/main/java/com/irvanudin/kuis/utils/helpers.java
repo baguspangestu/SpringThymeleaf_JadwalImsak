@@ -1,12 +1,14 @@
 package com.irvanudin.kuis.utils;
 
-import java.time.LocalDate;
-import org.springframework.format.datetime.standard.DateTimeFormatterFactory;
+import java.time.ZoneId;
+import java.time.format.*;
+import java.time.ZonedDateTime;
 
-public class helpers {
+public class Helpers {
   public static String getDateNow() {
-    LocalDate now = LocalDate.now();
-    DateTimeFormatterFactory formatterFactory = new DateTimeFormatterFactory("yyyy-MM-dd");
-    return now.format(formatterFactory.createDateTimeFormatter());
+    ZoneId zone = ZoneId.of("UTC+7");
+    ZonedDateTime now = ZonedDateTime.now(zone);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    return now.format(formatter);
   }
 }

@@ -10,16 +10,16 @@ import com.irvanudin.kuis.models.JadwalModel;
 import com.irvanudin.kuis.models.KabKotaModel;
 import com.irvanudin.kuis.models.ProvinsiModel;
 import com.irvanudin.kuis.models.JadwalModel.DetailJadwal;
-import com.irvanudin.kuis.services.ApiService;
+import com.irvanudin.kuis.services.ImsakiyahService;
 import com.irvanudin.kuis.utils.Helpers;
 
 @Controller
 public class HomeController {
 
-    private final ApiService apiService;
+    private final ImsakiyahService imsakiyahService;
 
-    public HomeController(ApiService apiService) {
-        this.apiService = apiService;
+    public HomeController(ImsakiyahService imsakiyahService) {
+        this.imsakiyahService = imsakiyahService;
     }
 
     @GetMapping("/")
@@ -29,9 +29,9 @@ public class HomeController {
         // Get Date
         String date = Helpers.getDateNow();
         // JsonString
-        String provinsiJString = apiService.getProvinsi();
-        String kabKotaJString = apiService.getKabKota(provinsi);
-        String jadwalJString = apiService.getJadwal(provinsi, kabkota);
+        String provinsiJString = imsakiyahService.getProvinsi();
+        String kabKotaJString = imsakiyahService.getKabKota(provinsi);
+        String jadwalJString = imsakiyahService.getJadwal(provinsi, kabkota);
         // Json to Object
         ObjectMapper objectMapper = new ObjectMapper();
         ProvinsiModel provinsiObj = objectMapper.readValue(provinsiJString, ProvinsiModel.class);

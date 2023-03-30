@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class ApiService {
+public class ImsakiyahService {
 
     private final RestTemplate restTemplate;
 
-    public ApiService(RestTemplate restTemplate) {
+    public ImsakiyahService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

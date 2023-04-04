@@ -1,4 +1,4 @@
-# 📆 JADWAl SHOLAT & IMSAKIYAH RAMADHAN 2023
+# 🕌 JADWAl SHOLAT & IMSAKIYAH RAMADHAN 2023
 
 Aplikasi Jadwal Imsyakiah Ramadhan 2023 sebagai Kuis kuliah S1 Sistem Informasi ITBA DCC Pringsewu 2022 dengan Bahasa Pemrograman Java dan Framework Spring Boot + Thymeleaf.
 

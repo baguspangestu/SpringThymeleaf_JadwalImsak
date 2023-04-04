@@ -3,16 +3,14 @@ const kabKota = document.getElementById("kabKota");
 
 let provinsiValue = provinsi.value;
 
-provinsi.addEventListener("change", onSelectProvinsi);
-function onSelectProvinsi(event) {
+provinsi.addEventListener("change", (event) => {
   provinsiValue = event.target.value;
   getDataKabKota(provinsiValue);
-}
+});
 
-kabKota.addEventListener("change", onSelectKabKota);
-function onSelectKabKota(event) {
+kabKota.addEventListener("change", (event) => {
   window.location.href = `/?provinsi=${provinsiValue}&kabkota=${event.target.value}`;
-}
+});
 
 async function getDataKabKota(provinsi) {
   try {
